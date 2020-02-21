@@ -50,14 +50,6 @@
         <url>https://github.com/resteasy/Resteasy/tree/master/</url>
     </scm>
 
-    <distributionManagement>
-        <repository>
-            <id>jboss-releases-repository</id>
-            <name>JBoss Releases Repository</name>
-            <url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
     <issueManagement>
         <system>JIRA</system>
         <url>https://jira.jboss.com/jira/browse/RESTEASY</url>
@@ -95,34 +87,7 @@
                 </property>
             </activation>
             <modules>
-                <module>resteasy-dependencies-bom</module>
-                <module>tjws</module>
-                <module>resteasy-jaxrs</module>
-                <module>resteasy-jaxrs-testsuite</module>
-                <module>resteasy-client</module>
-                <module>resteasy-client-microprofile</module>  
-                <module>resteasy-client-jetty</module>
                 <module>providers</module>
-                <module>resteasy-bom</module>
-                <module>resteasy-cache</module>
-                <module>resteasy-guice</module>
-                <module>eagledns</module>
-                <module>security</module>
-                <module>security-legacy</module>
-                <module>resteasy-links</module>
-                <module>resteasy-spring</module>
-                <module>resteasy-jsapi</module>
-                <module>resteasy-cdi</module>
-                <module>resteasy-servlet-initializer</module>
-                <module>resteasy-rxjava</module>
-                <module>resteasy-rxjava2</module>
-                <module>server-adapters</module>
-                <module>jboss-modules</module>
-                <module>resteasy-wadl</module>
-                <module>resteasy-wadl-undertow-connector</module>
-                <module>arquillian</module>
-                <module>profiling-tests</module>
-                <module>testsuite</module>
             </modules>
             <dependencyManagement>
                 <dependencies>
@@ -177,16 +142,6 @@
         </contributor>
     </contributors>
 
-    <repositories>
-        <repository>
-            <id>jboss</id>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>redhat</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-        </repository>
-    </repositories>
     <pluginRepositories>
     </pluginRepositories>
     <build>
@@ -327,6 +282,25 @@
                             </rules>
                         </configuration>
                     </execution>
+					<execution>
+						<id>enforce-java-version</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<bannedRepositories>
+									<level>${insecure.repositories}</level>
+									<bannedRepositories>http://fake-repo*</bannedRepositories>
+									<bannedPluginRepositories>http://fake-repo*</bannedPluginRepositories>
+								</bannedRepositories>
+								<requireJavaVersion>
+									<message>To build this project JDK ${jdk.min.version} (or greater) is required. Please install it.</message>
+									<version>${jdk.min.version}</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
                 </executions>
             </plugin>
         </plugins>
