@@ -4,13 +4,18 @@
     <parent>
         <groupId>org.jboss.resteasy</groupId>
         <artifactId>resteasy-jaxrs-all</artifactId>
-        <version>3.11.0.Final</version>
+        <version>4.11.0.epo</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>resteasy-jettison-provider</artifactId>
     <packaging>jar</packaging>
     <name>RESTEasy Jettison Provider</name>
     <description/>
+
+	<properties>
+		<version.org.codehaus.jettison>1.4.0</version.org.codehaus.jettison>
+	</properties>
+
 
     <dependencies>
         <dependency>
@@ -20,24 +25,33 @@
 
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jaxrs</artifactId>
-            <version>${project.version}</version>
+            <artifactId>resteasy-core</artifactId>
+            <version>${resteasy.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- keep jaxb provider in test scope as I'm making sure Jackson providers take precedence -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxb-provider</artifactId>
-            <version>${project.version}</version>
+            <version>${resteasy.version}</version>
         </dependency>
         <!--
            Used for optional JSON provider. Provider is activated by adding this
            jar to classpath
         -->
         <dependency>
-            <groupId>org.codehaus.jettison</groupId>
-            <artifactId>jettison</artifactId>
-        </dependency>
+			<groupId>org.codehaus.jettison</groupId>
+			<artifactId>jettison</artifactId>
+			<version>${version.org.codehaus.jettison}</version>
+			<exclusions>
+				<!-- This results in duplicate stax-api jars. This is the older
+		one. A newer is brought in by org.glassfish.jaxb -->
+				<exclusion>
+					<groupId>stax</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
             <artifactId>jboss-servlet-api_4.0_spec</artifactId>

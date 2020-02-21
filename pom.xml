@@ -14,7 +14,7 @@
 
     <groupId>org.jboss.resteasy</groupId>
     <artifactId>resteasy-jaxrs-all</artifactId>
-    <version>3.11.0.Final</version>
+    <version>4.11.0.epo</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -32,6 +32,8 @@
         <version.org.jacoco.plugin>0.7.9</version.org.jacoco.plugin>
         <version.surefire.plugin>2.19.1</version.surefire.plugin>
         <version.javadoc.plugin>3.0.1</version.javadoc.plugin>
+		<!-- Rest easy used for compilation -->
+		<resteasy.version>4.4.1.Final</resteasy.version>
     </properties>
 
     <url>http://rest-easy.org</url>
@@ -94,7 +96,7 @@
                     <dependency>
                         <groupId>org.jboss.resteasy</groupId>
                         <artifactId>resteasy-dependencies</artifactId>
-                        <version>${project.version}</version>
+                        <version>${resteasy.version}</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>

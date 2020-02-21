@@ -6,7 +6,7 @@ import org.jboss.resteasy.plugins.providers.jaxb.JAXBUnmarshalException;
 import org.jboss.resteasy.plugins.providers.jaxb.MapProvider;
 import org.jboss.resteasy.plugins.providers.jaxb.json.i18n.Messages;
 import org.jboss.resteasy.resteasy_jaxrs.i18n.LogMessages;
-import org.jboss.resteasy.util.Types;
+import org.jboss.resteasy.spi.util.Types;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;

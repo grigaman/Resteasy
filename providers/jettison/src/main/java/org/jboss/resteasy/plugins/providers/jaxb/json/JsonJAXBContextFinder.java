@@ -4,7 +4,7 @@ import org.jboss.resteasy.annotations.providers.jaxb.json.BadgerFish;
 import org.jboss.resteasy.annotations.providers.jaxb.json.Mapped;
 import org.jboss.resteasy.plugins.providers.jaxb.AbstractJAXBContextFinder;
 import org.jboss.resteasy.plugins.providers.jaxb.JAXBContextFinder;
-import org.jboss.resteasy.util.FindAnnotation;
+import org.jboss.resteasy.spi.util.FindAnnotation;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
